@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "django-strawberry-example"
+version = "0.1.0"
+description = "A reproduction of Strawberry GraphQL namespaces in a Django project"
+authors = ["Jonathan Hiles <jonathan@hil.es>"]
+packages = [{ include = "example", from = "." }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+channels = { extras = ["daphne"], version = "^4.1.0" }
+django = "^5.1.1"
+django-choices-field = "^2.3.0"
+django-stubs-ext = "^5.0.4"
+strawberry-graphql-django = "^0.47.2"
+twisted = { extras = ["http2", "tls"], version = "^24.7.0" }
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.6.4"
+
+[tool.poetry.group.typing.dependencies]
+mypy = "^1.11.2"
+django-stubs = "^5.0.4"
+
+[tool.ruff]
+src = ["example"]
+target-version = "py311"
+line-length = 120
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+files = ["example"]
+explicit_package_bases = true
+strict = true
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "example.settings"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,14 @@
+.idea/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.vscode/
+__pycache__/
+coverage/
+dist/
+.coverage*
+.DS_store
+.env*
+!.env.example
+*.sqlite3
+*-journal
